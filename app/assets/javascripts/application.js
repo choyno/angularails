@@ -15,3 +15,6 @@
 //= require bootstrap.min
 //= require angular.min
 //= require_tree .
+
+//= require angular-application
+
