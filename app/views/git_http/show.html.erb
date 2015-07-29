@@ -13,6 +13,10 @@
     </form>
 
     <hr />
+    <i class="icon-refresh icon-spin" ng-show="searching">
+      <%= image_tag("spinner.gif") %>
+    </i>
+
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="repo in repos">
         <h4 class="list-group-item-heading">{{ repo.full_name }}</h4>
