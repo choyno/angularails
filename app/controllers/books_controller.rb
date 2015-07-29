@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render json: @book }
+        format.json { render json: {books: @book, message: "#{@book.title} was successfully created" } }
       else
         format.html { render action: 'new' }
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -64,8 +64,10 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {
+        redirect_to books_url, notice: 'Book was successfully destroyed.'
+      }
+      format.json { render json: { message: "#{@book.title} was successfully destroyed" } }
     end
   end
 

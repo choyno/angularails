@@ -3,8 +3,14 @@
   <div class="row">
     <div class="col-md-6">
       <h1>Books</h1>
+
+      <div class="alert alert-success" ng-show="resultMessage"> 
+        <strong><i class="icon-warning-sign"></i> Yeah!</strong> {{ resultMessage }}
+      </div>
+
       <ul>
         <li ng-repeat="book in books">
+          <%= fa_icon "trash", "ng-click" => "delete(book)",:confirm => "Are you sure?" %>
           {{ book.title }} by {{ book.author}}
         </li>
       </ul>
