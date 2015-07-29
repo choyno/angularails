@@ -5,6 +5,7 @@ AngularRails.controller "TacoOrderController", ($scope) ->
 
  $scope.fillings = ["Beef", "Chicken", "Fish", "Carnitas"]
  $scope.extras = [ { name: "Sour Cream" }, { name: "Guac" }, { name: "Salsa" }]
+ $scope.cheeses = ["No Cheese", "Normal Cheese", "Mucho Queso", "Monterrey Jack"]
 
  $scope.clear = () ->
   $scope.taco = {}
