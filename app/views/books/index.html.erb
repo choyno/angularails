@@ -5,12 +5,13 @@
       <h1>Books</h1>
 
       <div class="alert alert-success" ng-show="resultMessage"> 
-        <strong><i class="icon-warning-sign"></i> Yeah!</strong> {{ resultMessage }}
+        <strong><i class="icon-warning-sign"></i>Yeah!</strong> {{ resultMessage }}
       </div>
 
-      <ul>
+      <ul style=" list-style: outside none none;">
         <li ng-repeat="book in books">
-          <%= fa_icon "trash", "ng-click" => "delete(book)",:confirm => "Are you sure?" %>
+          <%= fa_icon "pencil", "ng-click" => "edit(book)" %>
+          <%= fa_icon "trash", "ng-click" => "delete(book)" %>
           {{ book.title }} by {{ book.author}}
         </li>
       </ul>
