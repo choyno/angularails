@@ -13,6 +13,11 @@
     </form>
 
     <hr />
+
+    <div class="alert alert-danger" ng-show="errorMessage"> 
+      <strong><i class="icon-warning-sign"></i> Error!</strong> {{ errorMessage }}
+    </div>
+
     <i class="icon-refresh icon-spin" ng-show="searching">
       <%= image_tag("spinner.gif") %>
     </i>
