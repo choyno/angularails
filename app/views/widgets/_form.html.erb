@@ -14,8 +14,9 @@
 
     <div class="form-group" ng-class="{ 'has-error': widgetForm['widget[name]'].$invalid }">
       <%= f.label :name %><br>
-      <%= f.text_field :name, class: "form-control", "ng-model" => "name", required: "true" %>
+      <%= f.text_field :name, class: "form-control", "ng-model" => "name", required: "true", "ng-minlength" => "7" %>
       <span class="help-block" ng-show="widgetForm['widget[name]'].$error.required">Required</span>
+      <span class="help-block" ng-show="widgetForm['widget[name]'].$error.minlength">Minimun length of 7</span>
     </div>
     <div class="form-group" ng-class="{ 'has-error': widgetForm['widget[price]'].$invalid }">
       <%= f.label :price %><br>
