@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "git_http/show"
   resources :widgets
 
   get "models_need_dots/show"
