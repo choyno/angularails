@@ -1,9 +1,7 @@
-AngularRails.controller "BooksController", ($scope, $http) ->
+AngularRails.controller "BooksController", ($scope, Book, $http) ->
 
   $scope.getBooks = () ->
-    $http({ method: "GET", url: $scope.urls.books })
-      .success (response) ->
-        $scope.books = response.books
+    Book.getBooks( $scope )
 
   $scope.save = () ->
     $scope.errorMessage = ""
@@ -29,11 +27,7 @@ AngularRails.controller "BooksController", ($scope, $http) ->
       url: book.url
 
   $scope.delete = (book) ->
-    $scope.errorMessage = ""
-    $http({ method: "DELETE", url: book.url })
-      .success (response) ->
-        $scope.resultMessage = response.message
-        $scope.getBooks()
+    Book.delete( book, $scope )
 
 
 
