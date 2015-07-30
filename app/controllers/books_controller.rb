@@ -7,11 +7,9 @@ class BooksController < ApplicationController
     @books = Book.all
 
     respond_to do |format|
-      format.html { 
-        @books_json = @books.map{ |b| BookSerializer.new(b).serializable_hash }
-        @urls = { books: books_path }
-      }
-      format.json { render json: @books }
+      format.html {}
+      format.json { render json: @books }# using the BookService and using promiess "1 , 2"
+      #format.json { render json: @books, root: false, each_serializer: BookSerializer } #usin original resource
     end
   end
 

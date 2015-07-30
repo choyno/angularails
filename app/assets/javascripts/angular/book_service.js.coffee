@@ -1,4 +1,4 @@
-AngularRails.factory "Book", ( $http, $q ) ->
+AngularRails.factory "BookService", ( $http, $q ) ->
   self = {}
 
   self.getBooksWithPromises = () ->

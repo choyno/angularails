@@ -1,0 +1,17 @@
+
+%div{ "ng-app" =>"AngularRails", "ng-controller" => "BooksController", "ng-init" => "getBooks()"}
+  .row
+    .col-md-6
+      .h1 Books
+
+      .div{ class:"alert alert-success", "ng-show" =>"resultMessage" }
+        %strong
+          %i{ class:"icon-warning-sign" } Yeah! {{ resultMessage }}
+
+      %ul{ style: " list-style: outside none none;" }
+        %li{ "ng-repeat" => "book in books" }
+          = fa_icon "pencil", "ng-click" => "edit(book)"
+          = fa_icon "trash", "ng-click" => "delete(book)"
+          {{ book.title }} by {{ book.author}}
+    .col-md-6
+      = render 'form'

@@ -2,6 +2,6 @@
 //= require_tree ./angular
 
 
-AngularRails = angular.module("AngularRails", []);
+AngularRails = angular.module("AngularRails", ["ngResource"] );
 
 

@@ -1,7 +1,10 @@
-AngularRails.controller "BooksController", ($scope, Book, $http) ->
+AngularRails.controller "BooksController", ($scope, Book, BookService, $http) ->
 
   $scope.getBooks = () ->
-    Book.getBooksWithPromises().then ( books )  -> $scope.books = books
+    #BookService.getBooksWithPromises().then ( books ) -> $scope.books = books
+    # $scope.books = Book.query() using origianl resource
+    Book.query ( response ) ->
+     $scope.books = response.books
 
   $scope.save = () ->
     $scope.errorMessage = ""
@@ -27,7 +30,7 @@ AngularRails.controller "BooksController", ($scope, Book, $http) ->
       url: book.url
 
   $scope.delete = (book) ->
-    Book.delete( book, $scope )
+    BookService.delete( book, $scope )
 
 
 
