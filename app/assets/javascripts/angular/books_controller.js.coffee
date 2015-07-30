@@ -1,7 +1,7 @@
 AngularRails.controller "BooksController", ($scope, Book, $http) ->
 
   $scope.getBooks = () ->
-    Book.getBooks( $scope )
+    Book.getBooksWithPromises().then ( books )  -> $scope.books = books
 
   $scope.save = () ->
     $scope.errorMessage = ""
