@@ -1,4 +1,4 @@
-AngularRails.factory "BookService", ( $http, $q ) ->
+AngularRails.factory "BookService", ( Book, $http, $q ) ->
   self = {}
 
   self.getBooksWithPromises = () ->
@@ -17,11 +17,11 @@ AngularRails.factory "BookService", ( $http, $q ) ->
 
   self.delete = (book, scope) ->
     scope.errorMessage = ""
-    $http({ method: "DELETE", url: book.url })
-      .success (response) ->
-        scope.resultMessage = response.message
-        scope.book = {}
-        scope.getBooks()
+    Book.delete(book)
+    #book.$delete()
+    #scope.resultMessage = response.message
+    scope.book = {}
+    scope.getBooks()
 
   self
 

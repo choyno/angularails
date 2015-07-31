@@ -8,22 +8,19 @@ AngularRails.controller "BooksController", ($scope, Book, BookService, $http) ->
      $scope.books = response.books
 
   $scope.save = () ->
-    Book.save($scope.book)
+    if $scope.book.id?
+      Book.update( $scope.book )
+    else
+      Book.save($scope.book)
+
     $scope.book = {}
     $scope.getBooks()
 
-  $scope.edit = (book) ->
-    $scope.book =
-      id: book.id
-      title: book.title
-      author: book.author
-      url: book.url
+  $scope.edit = ( book ) ->
+    $scope.book = Book.get({ id: book.id })
 
   $scope.delete = (book) ->
-    BookService.delete( book, $scope )
-
-
-
+    BookService.delete(book, $scope)
 
 
 
