@@ -1,5 +1,5 @@
 
-<div ng-app="AngularRails" ng-controller="BooksController" ng-init="urls=<%= @urls.to_json %>; getBooks()">
+<div ng-app="AngularRails" ng-controller="BooksController" ng-init="urls=<%= @urls.to_json %>; init()">
   <div class="row">
     <div class="col-md-6">
       <h1>Books</h1>
@@ -15,6 +15,19 @@
           {{ book.title }} by {{ book.author}}
         </li>
       </ul>
+
+      <br />
+
+      <ul class="pagination">
+        <li><a ng-click="setPage(currentPage - 1)"> &laquo; </a></li>
+        <li ng-repeat="page in pages" ng-class="{ active: currentPage == page } ">
+          <a ng-click="setPage(page)">
+            {{ page }}
+          </a>
+        </li>
+        <li><a ng-click="setPage(currentPage + 1)"> &raquo; </a></li>
+      </ul>
+
     </div>
     <div class="col-md-6">
       <%= render 'form'  %>

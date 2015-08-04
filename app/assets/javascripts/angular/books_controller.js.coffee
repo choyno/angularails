@@ -1,7 +1,24 @@
 AngularRails.controller "BooksController", ($scope, Book, $http) ->
 
+  $scope.init = () ->
+    $scope.currentPage = 1
+    $scope.getBooks()
+
   $scope.getBooks = () ->
-    Book.getBooksWithPromises().then ( books )  -> $scope.books = books
+    $http({method: "GET", url:"/books", params: { page: $scope.currentPage }})
+      .success (response) ->
+        $scope.books = response.books
+        $scope.paging = response.meta
+        $scope.createPages()
+
+
+  $scope.createPages = () ->
+    $scope.pages = [1..$scope.paging.number_of_pages]
+
+  $scope.setPage = (newPage) ->
+    newPage = 1 if newPage < 1
+    $scope.currentPage = newPage
+    $scope.getBooks()
 
   $scope.save = () ->
     $scope.errorMessage = ""

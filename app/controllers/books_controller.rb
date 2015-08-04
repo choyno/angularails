@@ -4,14 +4,14 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(4)
 
     respond_to do |format|
       format.html { 
         @books_json = @books.map{ |b| BookSerializer.new(b).serializable_hash }
         @urls = { books: books_path }
       }
-      format.json { render json: @books }
+      format.json { render json: @books, meta: { number_of_pages: @books.num_pages, current_page: @books.current_page, total_count: @books.total_count }}
     end
   end
 
